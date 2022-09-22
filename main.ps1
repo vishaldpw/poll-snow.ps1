@@ -9,5 +9,7 @@ $method = "GET"
 $uri = "https://$SnowInstance/api/now/table/change_request?sysparm_query=short_descriptionLIKE$ShortDescription&sysparm_display_value=true"
 
 $response = Invoke-WebRequest -ContentType application/json -Method $method -Uri $uri -Credential $snowCreds|ConvertFrom-Json
-$ChangeNumber = $response.result.state
+$ChangeNumber = $response.result.number
+$ChangeState = $response.result.state
 return $ChangeNumber
+return $ChangeState
